@@ -5,8 +5,8 @@ from django.http import HttpResponse
 def recipes_list(request):
     context = {
         'recipes': [   
-            {'name': 'Recipe 1', 'link': '/recipe/1/'},
-            {'name': 'Recipe 2', 'link': '/recipe/2/'},
+            {'name': 'Recipe 1', 'link': '/recipe/1'},
+            {'name': 'Recipe 2', 'link': '/recipe/2'},
         ]
     }
     return render(request, 'ledger/recipes_list.html', context)

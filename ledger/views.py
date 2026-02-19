@@ -7,6 +7,6 @@ def recipes_list(request):
     recipes = Recipe.objects.all()
     return render(request, 'ledger/recipes_list.html', {'recipes': recipes})
 
-def recipe_detail(request, id):
-    recipe = get_object_or_404(Recipe, pk=id)
+def recipe_detail(request, pk):
+    recipe = get_object_or_404(Recipe, id=pk)
     return render(request, 'ledger/recipe_detail.html', {'recipe': recipe})

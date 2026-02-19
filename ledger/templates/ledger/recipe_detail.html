@@ -7,4 +7,6 @@
         <li>{{ ri.ingredient.name }} - {{ ri.quantity }}</li>
     {% endfor %}
 </ul>
+<hr>
+<a href="{% url 'ledger:recipes_list' %}"> Back to Recipe List</a>
 {% endblock %}

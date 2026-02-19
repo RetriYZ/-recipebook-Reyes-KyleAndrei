@@ -30,7 +30,7 @@ class RecipeIngredient(models.Model):
     recipe = models.ForeignKey(
                                 Recipe, 
                                 on_delete=models.CASCADE,
-                                related__name='ingredients'
+                                related_name='ingredients'
                                 )
     def __str__(self): 
         return f"{self.quantity} of {self.ingredient.name} for {self.recipe.name}"

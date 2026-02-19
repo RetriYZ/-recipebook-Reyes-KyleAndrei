@@ -23,10 +23,10 @@ class Recipe(models.Model):
 class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=100)
     ingredient = models.ForeignKey(
-                                    Ingredient, 
-                                    on_delete=models.CASCADE,
-                                    related_name='recipe_placements_and_qtys'
-                                   )
+                                Ingredient, 
+                                on_delete=models.CASCADE,
+                                related_name='recipe_placements_and_qtys'
+                               )
     recipe = models.ForeignKey(
                                 Recipe, 
                                 on_delete=models.CASCADE,

@@ -1,12 +1,15 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.views.generic import ListView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe
 # Create your views here.
 
-def recipes_list(request):
-    recipes = Recipe.objects.all()
-    return render(request, 'ledger/recipes_list.html', {'recipes': recipes})
+class RecipeListView(ListView):
+    model = Recipe
+    template_name = 'ledger/recipes_list.html'
+    context_object_name = 'recipes'
 
-def recipe_detail(request, pk):
-    recipe = get_object_or_404(Recipe, id=pk)
-    return render(request, 'ledger/recipe_detail.html', {'recipe': recipe})
+class RecipeDetailView(LoginRequiredMixin, DetailView):
+        model = Recipe
+        template_name = 'ledger/recipe_detail.html'
+        login_url = '/login/'

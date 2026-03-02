@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    bio = models.CharField(max_length=255)
+    bio = models.TextField(max_length=255)
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
@@ -20,7 +20,7 @@ class Ingredient(models.Model):
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
 
-    author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='recipes')
+    author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='recipes', null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)   
     updated_on = models.DateTimeField(auto_now_add=True)  
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Recipe, RecipeImage
+from .models import Recipe, RecipeImage, RecipeIngredient
 from django.urls import reverse
 # Create your views here.
 
@@ -37,3 +37,15 @@ class RecipeImageCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse('recipe_detail', kwargs={'pk': self.kwargs['pk']})
+    
+class IngredientCreateView(LoginRequiredMixin, CreateView):
+    model = RecipeIngredient # Replace with your actual model name
+    fields = ['ingredient', 'quantity']
+    template_name = 'ledger/add_ingredient.html'
+
+    def form_valid(self, form):
+        form.instance.recipe_id = self.kwargs['pk']
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('ledger:recipe_detail', kwargs={'pk': self.kwargs['pk']})

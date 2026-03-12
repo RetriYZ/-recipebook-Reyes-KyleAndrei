@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block page_heading %}{% endblock %}
+
+{% block content %}
+<h2>Add Image to Recipe</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload Image</button>
+</form>
+
+<hr>
+<a href="{% url 'recipe_detail' view.kwargs.pk %}">Cancel and go back to recipe</a>
+{% endblock %}

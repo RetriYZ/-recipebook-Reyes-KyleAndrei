@@ -11,6 +11,24 @@
     <strong>Author Bio:</strong> {{ recipe.author.bio }}
 </p> 
 
+<h3>Recipe Images</h3>
+<div class="recipe-images">
+    {% for img in recipe.images.all %}
+        <div style="margin-bottom: 20px;">
+            <img src="{{ img.image.url }}" alt="{{ img.description }}" style="max-width: 100%; height: auto; display: block;">
+            <p><small>{{ img.description }}</small></p>
+        </div>
+    {% empty %}
+        <p>No images available for this recipe.</p>
+    {% endfor %}
+</div>
+
+{% if user.is_authenticated %}
+    <p>
+        <a href="{% url 'ledger:add_image' recipe.pk %}">➕ Upload New Image</a>
+    </p>
+{% endif %}
+
 <hr>
     <h3>Ingredients</h3>
     <ul>

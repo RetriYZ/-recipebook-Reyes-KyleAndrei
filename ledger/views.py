@@ -11,23 +11,24 @@ class RecipeListView(ListView):
     context_object_name = 'recipes'
 
 class RecipeDetailView(LoginRequiredMixin, DetailView):
-        model = Recipe
-        template_name = 'ledger/recipe_detail.html'
-        login_url = '/login/'
+    model = Recipe
+    template_name = 'ledger/recipe_detail.html'
+    login_url = '/login/'
 
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
-    fields = ['title', 'description', 'ingredients', 'instructions']
-    template_name = 'recipebook/recipe_form.html'
+    fields = ['name']
+    template_name = 'ledger/recipe_form.html'
+
 
     def form_valid(self, form):
-        form.instance.author = self.request.user 
+        form.instance.author = self.request.user.profile 
         return super().form_valid(form)
 
 class RecipeImageCreateView(LoginRequiredMixin, CreateView):
     model = RecipeImage
     fields = ['image', 'description']
-    template_name = 'recipebook/add_image.html'
+    template_name = 'ledger/add_image.html'
 
     def form_valid(self, form):
         # Link the image to the recipe ID from the URL

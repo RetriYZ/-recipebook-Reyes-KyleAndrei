@@ -6,7 +6,7 @@
 <h2>All Recipes</h2>
 
 {% if user.is_authenticated %}
-    <div style="margin-bottom: 20px;">
+    <div>
         <a href="{% url 'ledger:recipe_add' %}" class="btn">Add New Recipe</a>
     </div>
 {% endif %}

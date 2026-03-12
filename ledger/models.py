@@ -53,4 +53,4 @@ class RecipeImage(models.Model):
     description = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"Image for {self.recipe.title}"
+        return f"Image for {self.recipe.name}"

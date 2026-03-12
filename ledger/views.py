@@ -35,7 +35,7 @@ class RecipeImageCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('recipe_detail', kwargs={'pk': self.kwargs['pk']})
+        return reverse('ledger:recipe_detail', kwargs={'pk': self.kwargs['pk']})
     
 class IngredientCreateView(LoginRequiredMixin, CreateView):
     model = RecipeIngredient 

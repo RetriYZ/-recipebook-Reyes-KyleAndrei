@@ -25,7 +25,7 @@ class RecipeImageInline(admin.TabularInline):
     extra = 1 
 
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'created_at')
+    list_display = ('name', 'author', 'created_on')
     inlines = [RecipeImageInline]
 
 admin.site.unregister(User)

@@ -8,6 +8,15 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
+    
+    <h3>Ingredients</h3>
+    {{ ingredients.management_form }}
+    {% for ingredient_form in ingredients %}
+        <div class="ingredient-row">
+            {{ ingredient_form.as_p }}
+        </div>
+    {% endfor %}
+    
     <button type="submit">Save Recipe</button>
 </form>
 

@@ -24,9 +24,11 @@
 </div>
 
 {% if user.is_authenticated %}
-    <p>
-        <a href="{% url 'ledger:add_image' recipe.pk %}">➕ Upload New Image</a>
-    </p>
+    <div class="actions">
+        <a href="{% url 'ledger:add_image' recipe.pk %}" class="btn btn-info">Add Image</a>
+    </div>
+        <a href="{% url 'ledger:add_ingredient' recipe.pk %}" class="btn btn-success">Add Ingredient</a>
+    </div>
 {% endif %}
 
 <hr>

@@ -31,7 +31,6 @@ class RecipeImageCreateView(LoginRequiredMixin, CreateView):
     template_name = 'ledger/add_image.html'
 
     def form_valid(self, form):
-        # Link the image to the recipe ID from the URL
         form.instance.recipe_id = self.kwargs['pk']
         return super().form_valid(form)
 
@@ -39,7 +38,7 @@ class RecipeImageCreateView(LoginRequiredMixin, CreateView):
         return reverse('recipe_detail', kwargs={'pk': self.kwargs['pk']})
     
 class IngredientCreateView(LoginRequiredMixin, CreateView):
-    model = RecipeIngredient # Replace with your actual model name
+    model = RecipeIngredient 
     fields = ['ingredient', 'quantity']
     template_name = 'ledger/add_ingredient.html'
 
